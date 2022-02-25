@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+}
+
+group 'sparrow'
+version '1.0-SNAPSHOT'
+
+ext {
+    swt_version = "3.118.0"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.eclipse.platform:org.eclipse.swt:' + swt_version
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+configurations.all {
+    resolutionStrategy {
+        dependencySubstitution {
+            // dirty eclipse resolution!
+            def os = System.getProperty("os.name").toLowerCase()
+            def swt_platform = 'none.use.a.real.os.please'
+            if (os.contains("windows")) {
+                swt_platform = 'win32.win32.x86_64'
+            } else if (os.contains("linux")) {
+                swt_platform = 'gtk.linux.x86_64'
+            }
+
+            substitute module('org.eclipse.platform:org.eclipse.swt.${osgi.platform}')\
+                with module("org.eclipse.platform:org.eclipse.swt." + swt_platform + ":" + swt_version)
+        }
+    }
+}
