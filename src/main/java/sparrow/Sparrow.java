@@ -44,7 +44,7 @@ public class Sparrow {
 
         display.dispose(); //end program, save resources
     }
-    public static void Error() {
+    public static void error() {
         Display display = new Display();
         Shell shell = new Shell();
         Device device = Display.getCurrent();
