@@ -1,5 +1,7 @@
 package sparrow;
 import java.util.Scanner;
+import java.util.Timer;
+
 import org.eclipse.swt.*;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
@@ -28,9 +30,7 @@ public class Sparrow {
         Device device = Display.getCurrent ();
         //239,255,232,255
 
-        String user = System.getProperty("user.name");
-
-        Image test = new Image(display, "C:\\Users\\" + user + "\\alert-client\\src\\main\\java\\sparrow\\resources\\success.png");
+        Image test = new Image(display, Sparrow.class.getResourceAsStream("/success.png"));
         shell.setBackgroundImage(test);
 
         shell.setText("Alert Successful // Sparrow"); //Set text at top
@@ -41,8 +41,10 @@ public class Sparrow {
 
         display = Display.getCurrent();
 
-        Thread.sleep(5000);
-
+        while(!shell.isDisposed()) {
+            if(!display.readAndDispatch())
+                display.sleep();
+        }
         display.dispose(); //end program, save resources
     }
     public static void error() throws InterruptedException {
@@ -53,8 +55,8 @@ public class Sparrow {
         //255,232,232,255
 
         String user = System.getProperty("user.name");
+        Image test = new Image(display, Sparrow.class.getResourceAsStream("/error.png"));
 
-        Image test = new Image(display, "C:\\Users\\" + user + "\\alert-client\\src\\main\\java\\sparrow\\resources\\error.png");
         shell.setBackgroundImage(test);
 
         shell.setText("Error Whilst Sending Alert // Sparrow"); //Set text at top
@@ -65,8 +67,10 @@ public class Sparrow {
 
         display = Display.getCurrent();
 
-        Thread.sleep(7000);
-
+        while(!shell.isDisposed()) {
+            if(!display.readAndDispatch())
+                display.sleep();
+        }
         display.dispose(); //end program, save resources
     }
 }
