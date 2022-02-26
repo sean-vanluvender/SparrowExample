@@ -28,7 +28,9 @@ public class Sparrow {
         Device device = Display.getCurrent ();
         //239,255,232,255
 
-        Image test = new Image(display, "\\C:\\Users\\seanv\\SCPSAlert\\success.png\\");
+        String user = System.getProperty("user.name");
+
+        Image test = new Image(display, "C:\\Users\\" + user + "\\alert-client\\src\\main\\java\\sparrow\\resources\\success.png");
         shell.setBackgroundImage(test);
 
         shell.setText("Alert Successful // Sparrow"); //Set text at top
@@ -50,7 +52,9 @@ public class Sparrow {
 
         //255,232,232,255
 
-        Image test = new Image(display, "\\C:\\Users\\seanv\\SCPSAlert\\error.png\\");
+        String user = System.getProperty("user.name");
+
+        Image test = new Image(display, "C:\\Users\\" + user + "\\alert-client\\src\\main\\java\\sparrow\\resources\\error.png");
         shell.setBackgroundImage(test);
 
         shell.setText("Error Whilst Sending Alert // Sparrow"); //Set text at top
