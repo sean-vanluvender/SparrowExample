@@ -12,20 +12,21 @@ import org.eclipse.swt.*;
 
 public class Sparrow {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        System.out.println("Start input here.");
         Scanner in = new Scanner(System.in);
         if (in.nextInt() == 0) { //little tester aw so cute
-            Success();
+            success();
         }else{
-            Error();
+            error();
         }
     }
-    public static void Success() {
+    public static void success() throws InterruptedException {
         Display display = new Display();
 
         Shell shell = new Shell(display); //new window
         Device device = Display.getCurrent ();
-        //Color cuscolor = new Color (device,239,255,232,255); //define cuscolor with a hex code
+        //239,255,232,255
 
         Image test = new Image(display, "\\C:\\Users\\seanv\\SCPSAlert\\success.png\\");
         shell.setBackgroundImage(test);
@@ -38,18 +39,16 @@ public class Sparrow {
 
         display = Display.getCurrent();
 
-        while (!shell.isDisposed()) { //while shell isn't closed
-            if (!display.readAndDispatch()) display.sleep();
-        }
+        Thread.sleep(5000);
 
         display.dispose(); //end program, save resources
     }
-    public static void error() {
+    public static void error() throws InterruptedException {
         Display display = new Display();
         Shell shell = new Shell();
         Device device = Display.getCurrent();
 
-        //Color cuscolor = new Color(device, 255,232,232,255);
+        //255,232,232,255
 
         Image test = new Image(display, "\\C:\\Users\\seanv\\SCPSAlert\\error.png\\");
         shell.setBackgroundImage(test);
@@ -62,9 +61,7 @@ public class Sparrow {
 
         display = Display.getCurrent();
 
-        while (!shell.isDisposed()) { //while shell isn't closed
-            if (!display.readAndDispatch()) display.sleep();
-        }
+        Thread.sleep(7000);
 
         display.dispose(); //end program, save resources
     }
