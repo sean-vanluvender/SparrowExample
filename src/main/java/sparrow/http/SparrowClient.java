@@ -11,23 +11,23 @@ import java.net.http.HttpResponse.BodyHandlers;
 public class SparrowClient {
 
     private String endpoint;
-    private String roomName;
+    private String token;
     private HttpClient client;
 
-    public SparrowClient(String endpoint, String name) {
+    public SparrowClient(String endpoint, String token) {
         this.endpoint = endpoint;
-        this.roomName = name;
+        this.token = token;
         this.client = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_1_1)
                 .build();
     }
 
     public boolean raiseAlert() {
-        String body = String.format("{\"room\":\"%s\", \"type\":\"emergency\"}", roomName);
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
                 .header("Content-Type", "application/json")
-                .POST(BodyPublishers.ofString(body))
+                .header("Authorization", "Token " + token)
+                .POST(BodyPublishers.ofString("{\"type\":\"emergency\"}"))
                 .build();
         try {
             HttpResponse<Void> response = client.send(request, BodyHandlers.discarding());

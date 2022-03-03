@@ -16,7 +16,8 @@ import sparrow.http.SparrowClient;
 public class Sparrow {
 
     public static void main(String[] args) {
-        SparrowClient sparrowClient = new SparrowClient("http://127.0.0.1:8000/v1/alerts/", "Sparrow");
+        SparrowClient sparrowClient = new SparrowClient("http://127.0.0.1:8000/api/v1/alert",
+                "CREATE_TOKEN_AND_PUT_IT_HERE");
         if (sparrowClient.raiseAlert()) {
             success();
         } else {
