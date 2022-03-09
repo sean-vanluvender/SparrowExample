@@ -11,19 +11,20 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.layout.*;
 import org.eclipse.swt.*;
+import sparrow.http.SparrowClient;
 
 public class Sparrow {
 
-    public static void main(String[] args) throws InterruptedException {
-        System.out.println("Start input here.");
-        Scanner in = new Scanner(System.in);
-        if (in.nextInt() == 0) { //little tester aw so cute
+    public static void main(String[] args) {
+        SparrowClient sparrowClient = new SparrowClient("http://127.0.0.1:8000/api/v1/alert",
+                "CREATE_TOKEN_AND_PUT_IT_HERE");
+        if (sparrowClient.raiseAlert()) {
             success();
-        }else{
+        } else {
             error();
         }
     }
-    public static void success() throws InterruptedException {
+    public static void success() {
         Display display = new Display();
 
         Shell shell = new Shell(display); //new window
@@ -47,7 +48,7 @@ public class Sparrow {
         }
         display.dispose(); //end program, save resources
     }
-    public static void error() throws InterruptedException {
+    public static void error() {
         Display display = new Display();
         Shell shell = new Shell();
         Device device = Display.getCurrent();
