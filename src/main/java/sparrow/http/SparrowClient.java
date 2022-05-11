@@ -33,7 +33,15 @@ public class SparrowClient {
         error.createNewFile();
 
         FileWriter write = new FileWriter("C:\\Users\\seanv\\Documents\\Sparrow\\diagnostics\\" + date + "+" + timereplaced + ".txt");
-        write.write("Sparrow Diagnostics File\nDATE: " + date + "\nTIME: " + time + "\n\n====================\n\nAdvanced status code recognition coming in future version. Your error status code was: " + i);
+        write.write("Sparrow Diagnostics File\nDATE: " + date + "\nTIME: " + time + "\n\n====================\n\n");
+        if(i == 401 || i == 403) {
+            write.write("Your error status code was " + i + ". The reason for failure was 'Unauthorized Connection'.\nThis error may be due to an invalid token or a mismatched token-to-user selection.");
+        }else if(i == 7) {
+            write.write("Your error status code was " + i + ". The reason for failure was 'Configuration Error'.\nA user might have broken the configuration file or it wasn't found.");
+        //}else if(i == 403) {
+        }else {
+            write.write("Your error status code was " + i + ". The reason for failure is not known at this time.");
+        }
         write.flush();
         write.close();
     }
@@ -53,7 +61,7 @@ public class SparrowClient {
                 return true;
             }
         } catch (IOException | InterruptedException e) {
-            createFile(7);
+            createFile(8);
             return false;
         }
     }

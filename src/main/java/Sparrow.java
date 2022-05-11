@@ -43,6 +43,10 @@ public class Sparrow {
                     }
                 }
             }
+            if (destination == null || token == null) {
+                SparrowClient.createFile(7);
+                error();
+            }
         }catch(Exception e) {
             SparrowClient.createFile(1);
         }
@@ -77,6 +81,7 @@ public class Sparrow {
         }
         display.dispose(); //end program, save resources
     }
+
     public static void unknownos(String os) {
         Display display = new Display();
         Shell shell = new Shell();
