@@ -30,10 +30,12 @@ public class SparrowClient {
         String date = java.time.LocalDate.now().toString();
         String time = java.time.LocalTime.now(ZoneId.of("America/New_York")).toString();
         String timereplaced = time.replaceAll(":","-");
-        File error = new File("C:\\Users\\seanv\\Documents\\Sparrow\\diagnostics\\" + date + "+" + timereplaced + ".txt");
-        error.createNewFile();
+        String user = System.getProperty("user.name");
+        File error = new File("C:\\Users\\" + user + "\\Documents\\Sparrow\\diagnostics\\" + date + "+" + timereplaced + ".txt");
 
-        FileWriter write = new FileWriter("C:\\Users\\seanv\\Documents\\Sparrow\\diagnostics\\" + date + "+" + timereplaced + ".txt");
+        error.createNewFile(); //dismiss if file creation is false or null
+
+        FileWriter write = new FileWriter("C:\\Users\\" + user + "\\Documents\\Sparrow\\diagnostics\\" + date + "+" + timereplaced + ".txt");
         write.write("Sparrow Diagnostics File\nDATE: " + date + "\nTIME: " + time + "\n\n====================\n\n");
         if(i == 401 || i == 403) {
             write.write("Your error status code was " + i + ". The reason for failure was 'Unauthorized Connection'.\nThis error may be due to an invalid token or a mismatched token-to-user selection.");

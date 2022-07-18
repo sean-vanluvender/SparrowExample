@@ -2,12 +2,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-import org.eclipse.swt.*;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.graphics.Device;
-import org.eclipse.swt.widgets.Text;
 
 import sparrow.http.SparrowClient;
 
