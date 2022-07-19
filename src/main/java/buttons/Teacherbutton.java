@@ -5,21 +5,19 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class Adminbutton implements MouseListener {
+public class Teacherbutton implements MouseListener {
 
-    JButton admin = new JButton("Administration Sign-in");
+    JButton teacher = new JButton("Teacher Sign-in");
 
     private final Color unselectedColor = Color.getHSBColor(0.325f, 0.29f, 1f); //super light green
-    private final Color selectedColor = Color.getHSBColor(0.325f, 1f, 1f); //light green
+    private final Color selectedColor = Color.getHSBColor(0.325f, 0.70f, 1f); //light green
 
-    public Adminbutton() {}
+    public Teacherbutton() {}
 
     public JButton button() {
-        admin = new JButton("Administration Sign-in");
-
-        admin.setBackground(unselectedColor);
-        admin.setOpaque(true);
-        return admin;
+        teacher.setBackground(unselectedColor);
+        teacher.setOpaque(true);
+        return teacher;
     }
 
     @Override
@@ -39,11 +37,11 @@ public class Adminbutton implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        admin.setBackground(selectedColor);
+
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        admin.setBackground(unselectedColor);
+
     }
 }
