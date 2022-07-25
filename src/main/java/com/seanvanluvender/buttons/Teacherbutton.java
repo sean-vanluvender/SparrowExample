@@ -1,4 +1,4 @@
-package buttons;
+package com.seanvanluvender.buttons;
 
 import javax.swing.*;
 import java.awt.*;

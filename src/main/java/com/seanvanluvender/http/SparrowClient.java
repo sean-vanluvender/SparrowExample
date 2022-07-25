@@ -1,4 +1,4 @@
-package sparrow.http;
+package com.seanvanluvender.http;
 
 import java.io.IOException;
 import java.io.File;

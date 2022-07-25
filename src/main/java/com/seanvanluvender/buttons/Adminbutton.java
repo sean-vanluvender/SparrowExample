@@ -1,4 +1,4 @@
-package buttons;
+package com.seanvanluvender.buttons;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,13 +11,14 @@ public class Adminbutton implements MouseListener {
 
     private final Color unselectedColor = Color.getHSBColor(0.325f, 0.29f, 1f); //super light green
     private final Color selectedColor = Color.getHSBColor(0.325f, 1f, 1f); //light green
+    private final Color unavailableColor = Color.getHSBColor(0f, 0f, .70f);
 
     public Adminbutton() {}
 
     public JButton button() {
         admin = new JButton("Administration Sign-in");
 
-        admin.setBackground(unselectedColor);
+        admin.setBackground(unavailableColor);
         admin.setOpaque(true);
         return admin;
     }
